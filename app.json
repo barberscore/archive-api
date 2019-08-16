@@ -25,7 +25,7 @@
     "heroku-postgresql:hobby-dev"
   ],
   "scripts": {
-    "postdeploy": "django-admin migrate && django-admin loaddata fix.json"
+    "postdeploy": "django-admin migrate"
   },
   "env": {
     "ALGOLIASEARCH_API_KEY": {
@@ -58,10 +58,6 @@
     },
     "CLOUDINARY_URL": {
       "description": "Cloudinary service.",
-      "required": true
-    },
-    "MEMBERCENTER_URL": {
-      "description": "BHS Membercenter service.",
       "required": true
     },
     "SENTRY_DSN": {
@@ -104,19 +100,6 @@
       ],
       "env": {
         "DJANGO_SETTINGS_MODULE": "settings.base",
-        "PYTHONPATH": "project",
-        "SECRET_KEY": {
-          "generator": "secret"
-        },
-        "CLOUDINARY_URL": "test",
-        "ALGOLIASEARCH_APPLICATION_ID": "test",
-        "ALGOLIASEARCH_API_KEY": "test",
-        "AUTH0_AUDIENCE": "test",
-        "AUTH0_CLIENT_ID": "test",
-        "AUTH0_CLIENT_SECRET": "test",
-        "AUTH0_DOMAIN": "login.barberscore.com",
-        "AUTH0_CONNECTION": "Default",
-        "MEMBERCENTER_URL": "test"
       },
       "stack": "heroku-18",
       "scripts": {
