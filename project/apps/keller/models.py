@@ -721,10 +721,10 @@ class CleanPanelist(models.Model):
         return convention
 
     def get_panelist(self):
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         Convention = apps.get_model('registration.convention')
         Session = apps.get_model('registration.session')
-        Round = apps.get_model('competition.round')
+        Round = apps.get_model('adjudication.round')
 
         year = self.year
         num = self.num
@@ -1297,10 +1297,10 @@ class RawPanelist(models.Model):
         return convention
 
     def get_panelist(self):
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         Convention = apps.get_model('registration.convention')
         Session = apps.get_model('registration.session')
-        Round = apps.get_model('competition.round')
+        Round = apps.get_model('adjudication.round')
 
         year = self.year
         num = self.num
@@ -1765,10 +1765,10 @@ class RawSong(models.Model):
 
 
     def get_song(self):
-        Song = apps.get_model('competition.song')
+        Song = apps.get_model('adjudication.song')
         Convention = apps.get_model('registration.convention')
         Session = apps.get_model('registration.session')
-        Round = apps.get_model('competition.round')
+        Round = apps.get_model('adjudication.round')
 
         year = self.year
         name = self.event

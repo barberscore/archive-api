@@ -1533,7 +1533,7 @@ class Session(TimeStampedModel):
     # Methods
     def get_invitees(self):
         Entry = apps.get_model('registration.entry')
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         target = self.contests.filter(
             status__gt=0,
             # award__children__isnull=False,

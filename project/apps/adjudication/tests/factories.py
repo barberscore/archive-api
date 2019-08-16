@@ -23,12 +23,12 @@ from django.db.models.signals import m2m_changed
 from django_fsm.signals import post_transition
 
 # First-Party
-from apps.competition.models import Appearance
-from apps.competition.models import Outcome
-from apps.competition.models import Panelist
-from apps.competition.models import Round
-from apps.competition.models import Score
-from apps.competition.models import Song
+from apps.adjudication.models import Appearance
+from apps.adjudication.models import Outcome
+from apps.adjudication.models import Panelist
+from apps.adjudication.models import Round
+from apps.adjudication.models import Score
+from apps.adjudication.models import Song
 
 from rest_framework_jwt.models import User
 
@@ -39,7 +39,7 @@ class AppearanceFactory(DjangoModelFactory):
     num = 1
     actual_start = None
     actual_finish = None
-    round = SubFactory('apps.competition.tests.factories.RoundFactory')
+    round = SubFactory('apps.adjudication.tests.factories.RoundFactory')
     # group = SubFactory('factories.GroupFactory')
 
     class Meta:
@@ -47,7 +47,7 @@ class AppearanceFactory(DjangoModelFactory):
 
 
 class OutcomeFactory(DjangoModelFactory):
-    round = SubFactory('apps.competition.tests.factories.RoundFactory')
+    round = SubFactory('apps.adjudication.tests.factories.RoundFactory')
     # award = SubFactory('factories.AwardFactory')
 
     class Meta:
@@ -59,7 +59,7 @@ class PanelistFactory(DjangoModelFactory):
     status = Panelist.STATUS.new
     kind = Panelist.KIND.official
     category = Panelist.CATEGORY.drcj
-    round = SubFactory('apps.competition.tests.factories.RoundFactory')
+    round = SubFactory('apps.adjudication.tests.factories.RoundFactory')
     # person = SubFactory('factories.PersonFactory')
 
     class Meta:
@@ -79,8 +79,8 @@ class RoundFactory(DjangoModelFactory):
 class ScoreFactory(DjangoModelFactory):
     status = Score.STATUS.new
     points = FuzzyInteger(50, 90)
-    song = SubFactory('apps.competition.tests.factories.SongFactory')
-    panelist = SubFactory('apps.competition.tests.factories.PanelistFactory')
+    song = SubFactory('apps.adjudication.tests.factories.SongFactory')
+    panelist = SubFactory('apps.adjudication.tests.factories.PanelistFactory')
 
     class Meta:
         model = Score
@@ -89,7 +89,7 @@ class ScoreFactory(DjangoModelFactory):
 class SongFactory(DjangoModelFactory):
     status = Song.STATUS.new
     num = 1
-    appearance = SubFactory('apps.competition.tests.factories.AppearanceFactory')
+    appearance = SubFactory('apps.adjudication.tests.factories.AppearanceFactory')
     # chart = None
 
     class Meta:

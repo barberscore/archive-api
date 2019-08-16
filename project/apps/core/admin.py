@@ -16,9 +16,6 @@ from .models import Chart
 from .models import Convention
 
 
-admin.site.disable_action('delete_selected')
-
-
 @admin.register(Award)
 class AwardAdmin(VersionAdmin, FSMTransitionMixin):
     fsm_field = [

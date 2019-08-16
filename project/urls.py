@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('core/', include('apps.core.urls')),
     path('registration/', include('apps.registration.urls')),
-    path('competition/', include('apps.competition.urls')),
+    path('adjudication/', include('apps.adjudication.urls')),
     path('jwt/', include('rest_framework_jwt.urls')),
     path('log/', include('django_fsm_log.urls')),
     path('rq/', include('django_rq.urls')),

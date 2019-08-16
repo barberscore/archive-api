@@ -18,7 +18,7 @@ from .models import Song
 class AppearanceSerializer(serializers.ModelSerializer):
     permissions = DRYPermissionsField()
     included_serializers = {
-        # 'songs': 'apps.competition.serializers.SongSerializer',
+        # 'songs': 'apps.adjudication.serializers.SongSerializer',
     }
 
     class Meta:
@@ -103,7 +103,7 @@ class OutcomeSerializer(serializers.ModelSerializer):
 class PanelistSerializer(serializers.ModelSerializer):
     permissions = DRYPermissionsField()
     # included_serializers = {
-    #     'scores': 'apps.competition.serializers.ScoreSerializer',
+    #     'scores': 'apps.adjudication.serializers.ScoreSerializer',
     # }
 
     class Meta:
@@ -142,9 +142,9 @@ class PanelistSerializer(serializers.ModelSerializer):
 class RoundSerializer(serializers.ModelSerializer):
     permissions = DRYPermissionsField()
     included_serializers = {
-        # 'appearances': 'apps.competition.serializers.AppearanceSerializer',
-        # 'outcomes': 'apps.competition.serializers.OutcomeSerializer',
-        # 'panelists': 'apps.competition.serializers.PanelistSerializer',
+        # 'appearances': 'apps.adjudication.serializers.AppearanceSerializer',
+        # 'outcomes': 'apps.adjudication.serializers.OutcomeSerializer',
+        # 'panelists': 'apps.adjudication.serializers.PanelistSerializer',
     }
 
     class Meta:
@@ -205,7 +205,7 @@ class ScoreSerializer(serializers.ModelSerializer):
 class SongSerializer(serializers.ModelSerializer):
     permissions = DRYPermissionsField()
     included_serializers = {
-        'scores': 'apps.competition.serializers.ScoreSerializer',
+        'scores': 'apps.adjudication.serializers.ScoreSerializer',
     }
 
     class Meta:

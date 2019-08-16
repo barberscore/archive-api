@@ -51,7 +51,7 @@ validate_twitter = RegexValidator(
 
 class AppearanceManager(Manager):
     def update_or_create_from_clean(self, item):
-        Round = apps.get_model('competition.round')
+        Round = apps.get_model('adjudication.round')
         round = Round.objects.get(
             # session__convention__district=item.district,
             # session__convention__season=item.season,
@@ -72,7 +72,7 @@ class AppearanceManager(Manager):
 
 class PanelistManager(Manager):
     def update_or_create_from_clean(self, item):
-        Round = apps.get_model('competition.round')
+        Round = apps.get_model('adjudication.round')
         round = Round.objects.get(
             # session__convention__district=item.district,
             # session__convention__season=item.season,
@@ -96,7 +96,7 @@ class PanelistManager(Manager):
 
 class SongManager(Manager):
     def update_or_create_from_clean(self, item):
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         appearance = Appearance.objects.get(
             # round__session__convention__district=item.district,
             # round__session__convention__season=item.season,

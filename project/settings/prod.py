@@ -23,13 +23,13 @@ sentry_sdk.init(
     ],
     send_default_pii=True,
     request_bodies='always',
-    release=get_env_variable("HEROKU_SLUG_COMMIT"),
-    environment=get_env_variable("HEROKU_APP_NAME"),
+    # release=get_env_variable("HEROKU_SLUG_COMMIT"),
+    # environment=get_env_variable("HEROKU_APP_NAME"),
 )
 
 # Email
-EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-SENDGRID_API_KEY = get_env_variable("SENDGRID_API_KEY")
+# EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+# SENDGRID_API_KEY = get_env_variable("SENDGRID_API_KEY")
 
 # Search
 ALGOLIA['AUTO_INDEXING'] = True

@@ -239,6 +239,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'apps.core',
     'apps.registration',
-    'apps.competition',
+    'apps.adjudication',
     'apps.keller',
 ]

@@ -365,8 +365,8 @@ class Appearance(TimeStampedModel):
         Chart = apps.get_model('core.chart')
         Person = apps.get_model('core.person')
         Group = apps.get_model('core.group')
-        Score = apps.get_model('competition.score')
-        Panelist = apps.get_model('competition.panelist')
+        Score = apps.get_model('adjudication.score')
+        Panelist = apps.get_model('adjudication.panelist')
 
         # Group
         group = Group.objects.get(id=self.group_id)
@@ -433,7 +433,7 @@ class Appearance(TimeStampedModel):
         # Mock Appearance
         Chart = apps.get_model('core.chart')
         Group = apps.get_model('core.group')
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         group = Group.objects.get(id=self.group_id)
         if group.kind == group.KIND.chorus:
             pos = group.members.filter(
@@ -575,9 +575,9 @@ class Appearance(TimeStampedModel):
         Chart = apps.get_model('core.chart')
         Person = apps.get_model('core.person')
         Group = apps.get_model('core.group')
-        Panelist = apps.get_model('competition.panelist')
-        Song = apps.get_model('competition.song')
-        Score = apps.get_model('competition.score')
+        Panelist = apps.get_model('adjudication.panelist')
+        Song = apps.get_model('adjudication.song')
+        Score = apps.get_model('adjudication.score')
 
         # Appearancers Block
         group = Group.objects.get(id=self.group_id)
@@ -892,8 +892,8 @@ class Appearance(TimeStampedModel):
         return self.csa.save('csa', content)
 
     def get_complete_email(self):
-        Panelist = apps.get_model('competition.panelist')
-        Score = apps.get_model('competition.score')
+        Panelist = apps.get_model('adjudication.panelist')
+        Score = apps.get_model('adjudication.score')
         Chart = apps.get_model('core.chart')
 
         # Context
@@ -1195,7 +1195,7 @@ class Appearance(TimeStampedModel):
     )
     def build(self, *args, **kwargs):
         """Sets up the Appearance."""
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         panelists = self.round.panelists.filter(
             category__gt=Panelist.CATEGORY.ca,
         )
@@ -1544,7 +1544,7 @@ class Outcome(TimeStampedModel):
     def get_name(self):
         Award = apps.get_model('core.award')
         Group = apps.get_model('core.group')
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         award = Award.objects.get(self.award_id)
         if self.round.kind != self.round.KIND.finals and not award.is_single:
             return "(Result determined in Finals)"
@@ -2006,8 +2006,8 @@ class Panelist(TimeStampedModel):
         Group = apps.get_model('core.group')
         Chart = apps.get_model('core.chart')
         Person = apps.get_model('core.person')
-        Appearance = apps.get_model('competition.appearance')
-        Score = apps.get_model('competition.score')
+        Appearance = apps.get_model('adjudication.appearance')
+        Score = apps.get_model('adjudication.score')
         # Score block
         group_ids = self.round.appearances.exclude(
             # Don't include advancers or MTs on PSA
@@ -2382,9 +2382,9 @@ class Round(TimeStampedModel):
         Group = apps.get_model('core.group')
         Chart = apps.get_model('core.chart')
         Person = apps.get_model('core.person')
-        Panelist = apps.get_model('competition.panelist')
-        Appearance = apps.get_model('competition.appearance')
-        Song = apps.get_model('competition.song')
+        Panelist = apps.get_model('adjudication.panelist')
+        Appearance = apps.get_model('adjudication.appearance')
+        Song = apps.get_model('adjudication.song')
 
         # Score Block - get completeds
         publics = self.appearances.filter(
@@ -2853,9 +2853,9 @@ class Round(TimeStampedModel):
         Group = apps.get_model('core.group')
         Person = apps.get_model('core.person')
         Chart = apps.get_model('core.chart')
-        Appearance = apps.get_model('competition.appearance')
-        Panelist = apps.get_model('competition.panelist')
-        Song = apps.get_model('competition.song')
+        Appearance = apps.get_model('adjudication.appearance')
+        Panelist = apps.get_model('adjudication.panelist')
+        Song = apps.get_model('adjudication.song')
 
         # Score Block
         group_ids = self.appearances.exclude(
@@ -3309,10 +3309,10 @@ class Round(TimeStampedModel):
     def get_legacy_oss(self):
         Chart = apps.get_model('core.chart')
         Person = apps.get_model('core.person')
-        Panelist = apps.get_model('competition.panelist')
-        Appearance = apps.get_model('competition.appearance')
-        Song = apps.get_model('competition.song')
-        Score = apps.get_model('competition.score')
+        Panelist = apps.get_model('adjudication.panelist')
+        Appearance = apps.get_model('adjudication.appearance')
+        Song = apps.get_model('adjudication.song')
+        Score = apps.get_model('adjudication.score')
 
         # Get the Groups
         group_ids = self.appearances.filter(
@@ -3600,7 +3600,7 @@ class Round(TimeStampedModel):
     def get_titles(self):
         Chart = apps.get_model('core.chart')
         Group = apps.get_model('core.group')
-        Song = apps.get_model('competition.song')
+        Song = apps.get_model('adjudication.song')
         appearances = self.appearances.filter(
             draw__gt=0,
         ).order_by(
@@ -3639,10 +3639,10 @@ class Round(TimeStampedModel):
         return content
 
     def get_announcements(self):
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         Award = apps.get_model('core.award')
         Group = apps.get_model('core.group')
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         appearances = self.appearances.filter(
             draw__gt=0,
         ).order_by(
@@ -3801,7 +3801,7 @@ class Round(TimeStampedModel):
 
 
     def get_judge_emails(self):
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         judges = self.panelists.filter(
             # status=Panelist.STATUS.active,
             category__gt=Panelist.CATEGORY.ca,
@@ -3825,7 +3825,7 @@ class Round(TimeStampedModel):
         return result
 
     def mock(self):
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         if self.status != self.STATUS.started:
             raise RuntimeError("Round not Started")
         appearances = self.appearances.exclude(
@@ -3843,9 +3843,9 @@ class Round(TimeStampedModel):
 
 
     def get_publish_email(self):
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         Group = apps.get_model('core.group')
-        Panelist = apps.get_model('competition.panelist')
+        Panelist = apps.get_model('adjudication.panelist')
         group_ids = self.appearances.filter(
             is_private=False,
         ).exclude(
@@ -4075,7 +4075,7 @@ class Round(TimeStampedModel):
         return True
 
     def can_complete(self):
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         return all([
             self.appearances.filter(
                 status__in=[
@@ -4239,7 +4239,7 @@ class Round(TimeStampedModel):
             #     )
 
         # Create Appearances
-        Appearance = apps.get_model('competition.appearance')
+        Appearance = apps.get_model('adjudication.appearance')
         Entry = apps.get_model('registration.entry')
         # If the first round, populate from entries
         if not prior_round:
@@ -4339,8 +4339,8 @@ class Round(TimeStampedModel):
         conditions=[can_complete],)
     def complete(self, *args, **kwargs):
         return
-        # Appearance = apps.get_model('competition.appearance')
-        # Panelist = apps.get_model('competition.panelist')
+        # Appearance = apps.get_model('adjudication.appearance')
+        # Panelist = apps.get_model('adjudication.panelist')
         # # Run outcomes
         # outcomes = self.outcomes.all()
         # for outcome in outcomes:
@@ -4459,8 +4459,8 @@ class Round(TimeStampedModel):
         target=STATUS.verified,
         conditions=[can_verify],)
     def verify(self, *args, **kwargs):
-        Appearance = apps.get_model('competition.appearance')
-        Panelist = apps.get_model('competition.panelist')
+        Appearance = apps.get_model('adjudication.appearance')
+        Panelist = apps.get_model('adjudication.panelist')
         completed_appearances = self.appearances.filter(
             status=Appearance.STATUS.verified,
         ).exclude(
@@ -4493,8 +4493,8 @@ class Round(TimeStampedModel):
         conditions=[can_publish],)
     def publish(self, *args, **kwargs):
         """Publishes the results and notifies all parties"""
-        Appearance = apps.get_model('competition.appearance')
-        Panelist = apps.get_model('competition.panelist')
+        Appearance = apps.get_model('adjudication.appearance')
+        Panelist = apps.get_model('adjudication.panelist')
         # Send the OSS
         send_publish_email_from_round.delay(self)
         # Send the CSAs
